@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<robot name="yurobot">
+
+	<material name="Black">
+		<color rgba="0 0 0 1"/>
+	</material>
+	<material name="White">
+		<color rgba="1 1 1 1"/>
+	</material>
+	<material name="Blue">
+		<color rgba="0 0 1 1"/>
+	</material>
+	<material name="Red">
+		<color rgba="1 0 0 1"/>
+	</material>
+
+  <link name="world" />
+  <joint name="world_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="world" />
+      <child link="base_link" />
+  </joint>
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.3" radius="0.6"/>
+      </geometry>
+      <material name="White"></material> 
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.28" radius="0.58"/>
+      </geometry>
+      <material name="Black"></material>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.03"/>
+    </inertial>
+  </link>
+    
+  <link name="link1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.8 0.8 0.9" />
+      </geometry>
+      <material name="Blue"></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.78 0.78 0.88"/>
+      </geometry>
+      <material name="Black"></material>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.016"/>
+    </inertial>
+  </link>
+    
+  <joint name="joint1" type="revolute">
+      <parent link="base_link" />
+      <child link="link1" />
+      <origin xyz="0 0 1" />
+      <axis xyz="0 0 1"/>
+      <limit effort="1" lower="-3.14159" upper="3.14159" velocity="0.1001"/>
+  </joint>
+
+  <link name="link2">
+    <visual>
+      <origin xyz="0.7 0 2" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6 0.6 4" />
+      </geometry>
+      <material name="Red"></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.58 0.58 3.98"/>
+      </geometry>
+      <material name="Black"></material>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.27" ixy="0" ixz="0" iyy="0.012" iyz="0" izz="0.27"/>
+    </inertial>
+  </link>
+
+  <joint name="joint2" type="revolute">
+    <parent link="link1" />
+    <child link="link2" />
+    <origin xyz="0 0 0" />
+    <axis xyz="1 0 0"/>
+    <limit effort="1" lower="-1.5707" upper="1.5707" velocity="1.0001"/>
+  </joint>
+
+  <link name="link3">
+    <visual>
+      <origin xyz="0 0 2" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.5 0.5 4" />
+      </geometry>
+      <material name="Blue"></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.48 0.48 3.98"/>
+      </geometry>
+      <material name="Black"></material>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.27" ixy="0" ixz="0" iyy="0.012" iyz="0" izz="0.27"/>
+    </inertial>
+  </link>
+
+  <joint name="joint3" type="revolute">
+    <parent link="link2" />
+    <child link="link3" />
+    <origin xyz="0.15 0 3.6" />
+    <axis xyz="1 0 0"/>
+    <limit effort="1" lower="-3.14159" upper="3.14159" velocity="1.001"/>
+  </joint>
+
+  <link name="link4">
+    <visual>
+      <origin xyz="0.25 0 0.2" rpy="0 1.5707 0"/>
+      <geometry>
+        <box size="0.4 0.4 1" />
+      </geometry>
+      <material name="Red"></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.38 0.38 0.98"/>
+      </geometry>
+      <material name="Black"></material>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.019" ixy="0" ixz="0" iyy="0.019" iyz="0" izz="0.005"/>
+    </inertial>
+  </link>
+
+  <joint name="joint4" type="revolute">
+    <parent link="link3" />
+    <child link="link4" />
+    <origin xyz="0 0 4" />
+    <axis xyz="0 0 1"/>
+    <limit effort="1" lower="-3.14159" upper="3.14159" velocity="1.001"/>
+  </joint>
+
+  <link name="link5">
+    <visual>
+      <origin xyz="0.2 0 0.3" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.4 0.4 1" />
+      </geometry>
+      <material name="Blue"></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.38 0.38 0.98"/>
+      </geometry>
+      <material name="Black"></material>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.019" ixy="0" ixz="0" iyy="0.005" iyz="0" izz="0.019"/>
+    </inertial>
+  </link>
+
+  <joint name="joint5" type="revolute">
+    <parent link="link4" />
+    <child link="link5" />
+    <origin xyz="0.75 0 0.2" />
+    <axis xyz="1 0 0"/>
+    <limit effort="1" lower="-3.14159" upper="3.14159" velocity="1.001"/>
+  </joint>
+
+  <link name="link6">
+    <visual>
+      <origin xyz="0.2 0 0.2" rpy="0 1.5707 0"/>
+      <geometry>
+        <box size="0.4 0.4 0.8" />
+      </geometry>
+      <material name="Red"></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.38 0.38 0.78"/>
+      </geometry>
+      <material name="Black"></material>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.013" ixy="0" ixz="0" iyy="0.013" iyz="0" izz="0.005"/>
+    </inertial>
+  </link>
+
+  <joint name="joint6" type="revolute">
+    <parent link="link5" />
+    <child link="link6" />
+    <origin xyz="0.2 0 0.8" />
+    <axis xyz="0 0 1"/>
+    <limit effort="1" lower="-3.14159" upper="3.14159" velocity="1.0001"/>
+  </joint>
+
+  <link name="link7">
+    <visual>
+      <origin xyz="0.1 0 0" rpy="0 1.5707 0"/>
+      <geometry>
+        <cylinder length="0.2" radius="0.2"/>
+      </geometry>
+      <material name="Black"></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.18" radius="0.18"/>
+      </geometry>
+      <material name="Black"></material>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <joint name="joint7" type="revolute">
+    <parent link="link6" />
+    <child link="link7" />
+    <origin xyz="0.6 0 0.2" />
+    <axis xyz="1 0 0"/>
+    <limit effort="1" lower="-3.14159" upper="3.14159" velocity="1.0001"/>
+  </joint>
+
+  <gazebo reference="base_link">
+      <material>Gazebo/Black</material>
+      <gravity>true</gravity>
+      <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="link1">
+      <material>Gazebo/Gray</material>
+      <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="link2">
+      <material>Gazebo/Red</material>
+      <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="link3">
+      <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="link4">
+      <material>Gazebo/Green</material>
+  </gazebo>
+  <gazebo reference="link5">
+      <material>Gazebo/Yellow</material>
+  </gazebo>
+  <gazebo reference="link6">
+      <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="link7">
+      <material>Gazebo/White</material>
+  </gazebo>
+
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+        <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <joint name="joint1">
+        <command_interface name="position">
+            <param name="min">-1</param>
+            <param name="max">1</param>
+        </command_interface>
+        <state_interface name="position">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint2">
+        <command_interface name="position">
+            <param name="min">-1</param>
+            <param name="max">1</param>
+        </command_interface>
+        <state_interface name="position">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint3">
+        <command_interface name="position">
+            <param name="min">-1</param>
+            <param name="max">1</param>
+        </command_interface>
+        <state_interface name="position">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint4">
+        <command_interface name="position">
+            <param name="min">-1</param>
+            <param name="max">1</param>
+        </command_interface>
+        <state_interface name="position">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint5">
+        <command_interface name="position">
+            <param name="min">-1</param>
+            <param name="max">1</param>
+        </command_interface>
+        <state_interface name="position">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint6">
+        <command_interface name="position">
+            <param name="min">-1</param>
+            <param name="max">1</param>
+        </command_interface>
+        <state_interface name="position">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint7">
+      <command_interface name="position">
+          <param name="min">-1</param>
+          <param name="max">1</param>
+      </command_interface>
+      <state_interface name="position">
+          <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+
+  <gazebo>
+      <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+          <parameters>/home/yu/ros_project/myrobot_ws/src/myrobot/config/ros2_controllers.yaml</parameters>
+          <robot_param_node>robot_state_publisher</robot_param_node>
+      </plugin>
+  </gazebo>
+
+</robot>
